@@ -243,7 +243,7 @@ class FourierConvolution(nn.Module):
         f_conv = f_input * f_filter_real
         dim_input = len(input.shape)
         dim_input_batch = dim_input-self.dim
-        conv_ouput_real = self.ifftn(f_conv, self.dim, s=input.shape[dim_input_batch::])
+        conv_ouput_real = self.ifftn(f_conv, s=input.shape[dim_input_batch::])
         result = conv_ouput_real
 
         return FFTVal(result, ini=-1)
@@ -308,7 +308,7 @@ class InverseFourierConvolution(nn.Module):
         f_conv = f_input/f_filter_real
         dim_input = len(input.shape)
         dim_input_batch = dim_input - self.dim
-        conv_ouput_real = self.ifftn(f_conv,self.dim,s=input.shape[dim_input_batch::])
+        conv_ouput_real = self.ifftn(f_conv,s=input.shape[dim_input_batch::])
         result = conv_ouput_real
         return FFTVal(result, ini=-1)
 
@@ -575,7 +575,7 @@ class FourierGaussianConvolution(nn.Module):
         f_conv = f_input * f_filter_real
         dim_input = len(input.shape)
         dim_input_batch = dim_input - self.dim
-        conv_ouput_real = self.ifftn(f_conv, self.dim, s=input.shape[dim_input_batch::])
+        conv_ouput_real = self.ifftn(f_conv, s=input.shape[dim_input_batch::])
         result = conv_ouput_real
 
         return FFTVal(result, ini=-1)
